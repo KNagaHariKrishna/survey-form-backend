@@ -12,7 +12,7 @@ const verifyToken = (req, res, next) => {
       next(); //this will continue user next function
     });
   } else {
-    return res.status(401).json("You are not authenticated");
+    return res.status(401).json("You are not authenticated please confirm");
   }
 };
 // this is for authorisation if id=user param or admin then login
