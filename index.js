@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const userRoute=require("./routes/user");
 const authRoute=require("./routes/auth");
+const registrationRoute = require('./routes/registration')
+const loginRoute = require('./routes/login'); 
 
 const cors = require("cors");
 
@@ -38,7 +40,10 @@ app.use(express.json());
 app.use("/api/auth", authRoute);
 //user call
 app.use("/api/users", userRoute);
-//product call
+
+//another method
+app.use('/api', registrationRoute);
+app.use('/api', loginRoute)
 
 
 
