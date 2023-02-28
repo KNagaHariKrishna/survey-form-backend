@@ -12,10 +12,10 @@ const mongoose = require("mongoose");
 const dotenv=require("dotenv");//call the library
 dotenv.config();//
 
-const url=("mongodb://SurveyForm:SurveyForm@ac-80jkqqd-shard-00-00.v6ubwsk.mongodb.net:27017,ac-80jkqqd-shard-00-01.v6ubwsk.mongodb.net:27017,ac-80jkqqd-shard-00-02.v6ubwsk.mongodb.net:27017/?ssl=true&replicaSet=atlas-n0y28c-shard-0&authSource=admin&retryWrites=true&w=majority")
+// const url=("process.env.URL")
 mongoose.set("strictQuery", true);
 mongoose
-.connect(url)
+.connect(process.env.URL)
 .then(() => console.log("MongoDB Connection Successfull"))
 .catch((err)=>{
   console.log(err);
@@ -44,9 +44,9 @@ app.use("/api/users", userRoute);
 
 //this is callback function
 app.listen(process.env.PORT || 5000, () => {
-  console.log("Backend server is running and working!");
+  console.log("Backend server is running on 5000!");
 });
-
+ 
 
 
 
