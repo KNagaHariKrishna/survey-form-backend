@@ -9,10 +9,22 @@ router.post("/register", async (req, res) => {
   const newUser = new User({
     username: req.body.username,
     email: req.body.email,
+    phone:req.body.phone,
+    profession:req.body.profession,
+
+    password:req.body.password,
     password: CryptoJS.AES.encrypt(
       req.body.password,
       process.env.PASS_SEC
     ).toString(),
+
+    confirmPassword:req.body.confirmPassword,
+    confirmPassword: CryptoJS.AES.encrypt(
+      req.body.confirmPassword,
+      process.env.PASS_SEC
+    ).toString(),
+
+
   });
 
   try {
@@ -27,7 +39,7 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     //first find our user in db..//here mongo query write to find
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ email: req.body.email });
     if (!user) {
       return res.status(401).json("Wrong Username,Please Try again");
     }

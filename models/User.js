@@ -21,6 +21,19 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  phone:{
+    type:Number,
+    require:true,
+  },
+  profession:{
+    type:String,
+    require:true,
+  },
+  confirmPassword:{
+    type: String,
+    require: true,
+    unique: true,
+  }
 },
 {timestamps:true}
 );
