@@ -5,6 +5,7 @@ const authRoute=require("./routes/auth");
 const registrationRoute = require('./routes/registration')
 const loginRoute = require('./routes/login'); 
 const survey = require('./routes/survey'); 
+const getsurvey =require('./routes/getSurvey');
 
 const cors = require("cors");
 
@@ -48,6 +49,9 @@ app.use('/api', loginRoute)
 
 //create survey
 app.use('/api', survey)
+
+//get survey
+app.use('/api', getsurvey)
 
 
 
