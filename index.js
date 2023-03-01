@@ -17,7 +17,7 @@ dotenv.config();//
 // const url=("process.env.URL")
 mongoose.set("strictQuery", true);
 mongoose
-.connect(process.env.URL)
+.connect('mongodb://Mangesh:Mangesh@ac-f6n0okn-shard-00-00.hos3xxm.mongodb.net:27017,ac-f6n0okn-shard-00-01.hos3xxm.mongodb.net:27017,ac-f6n0okn-shard-00-02.hos3xxm.mongodb.net:27017/?ssl=true&replicaSet=atlas-lc7bfe-shard-0&authSource=admin&retryWrites=true&w=majority')
 .then(() => console.log("MongoDB Connection Successfull"))
 .catch((err)=>{
   console.log(err);
