@@ -1,0 +1,45 @@
+const express = require("express");
+const router = express.Router();
+const Survey = require("../models/Survey");
+const secret = "RESTAPI";
+
+router.post("/survey", async (req, res) => {
+  try {
+    console.log(req.body);
+    
+      
+    const {
+        selectedFile,
+        name,
+        startdate,
+        enddate,
+        desc,
+        ocrit,
+        surveytype} =
+      req.body; 
+      const data = await Survey.create({
+        selectedFile,
+        name,
+        startdate,
+       enddate,
+       ocrit,
+       desc,
+       surveytype,
+       
+
+      });
+      res.json({
+        status: "success",
+        message: "Registration Successful",
+        data,
+      });
+  
+  } catch (e) {
+    res.status(500).json({
+      status: "Failed",
+      message: e.message,
+    });
+  }
+});
+
+module.exports = router;
