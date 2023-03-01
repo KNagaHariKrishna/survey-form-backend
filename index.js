@@ -5,7 +5,7 @@ const authRoute=require("./routes/auth");
 const registrationRoute = require('./routes/registration')
 const loginRoute = require('./routes/login'); 
 const survey = require('./routes/survey'); 
-
+const questions = require('./routes/questions'); 
 const cors = require("cors");
 
 
@@ -48,7 +48,7 @@ app.use('/api', loginRoute)
 
 //create survey
 app.use('/api', survey)
-
+app.use('/api', questions)
 
 
 //this is callback function
