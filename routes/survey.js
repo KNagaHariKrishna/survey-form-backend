@@ -30,7 +30,7 @@ router.post("/survey", async (req, res) => {
       });
       res.json({
         status: "success",
-        message: "Registration Successful",
+        message: "Survey details insertion Successful",
         data,
       });
   
