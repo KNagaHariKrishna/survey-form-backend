@@ -4,6 +4,7 @@ const userRoute=require("./routes/user");
 const authRoute=require("./routes/auth");
 const registrationRoute = require('./routes/registration')
 const loginRoute = require('./routes/login'); 
+const survey = require('./routes/survey'); 
 
 const cors = require("cors");
 
@@ -44,6 +45,9 @@ app.use("/api/users", userRoute);
 //another method
 app.use('/api', registrationRoute);
 app.use('/api', loginRoute)
+
+//create survey
+app.use('/api', survey)
 
 
 
