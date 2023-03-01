@@ -7,17 +7,17 @@ router.post("/creatsurvey", async (req, res) => {
   try {
     console.log(req.body);
 
-    const { selectedFile, name, startdate, enddate, desc, ocrit, surveytype } =
+    const { name, startdate, enddate, description, otherCriteria, surveyType,fileUploaded } =
       req.body;
 
     const data = await Survey.create({
-      selectedFile,
       name,
       startdate,
       enddate,
-      ocrit,
-      desc,
-      surveytype,
+      description,
+      otherCriteria,
+      surveyType,
+      fileUploaded
     });
     res.json({
       status: "success",
