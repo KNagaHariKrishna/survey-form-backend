@@ -5,11 +5,12 @@ const authRoute=require("./routes/auth");
 const registrationRoute = require('./routes/registration')
 const loginRoute = require('./routes/login'); 
 const survey = require('./routes/survey'); 
-
 const questions = require('./routes/questions'); 
-
 const getsurvey =require('./routes/getSurvey');
+const deletesurvey=require("./routes/deletesurvey")
 
+const profile =require('./routes/profile');
+bodyParser = require('body-parser');
 const cors = require("cors");
 
 
@@ -39,6 +40,7 @@ mongoose
 
 
 app.use(cors());
+app.use('/public', express.static('public'));
 app.use(express.json());
 
 //authtication call
@@ -53,11 +55,29 @@ app.use('/api', loginRoute)
 //create survey
 app.use('/api', survey)
 
+//apt for save questions
 app.use('/api', questions)
-
 
 //get survey
 app.use('/api', getsurvey)
+
+//delete the survey
+app.use('/api', deletesurvey)
+
+//for profile pic change
+app.use('/api', profile)
+
+app.use((req, res, next) => {
+  // Error goes via `next()` method
+  setImmediate(() => {
+      next(new Error('Something went wrong'));
+  });
+});
+app.use(function (err, req, res, next) {
+  console.error(err.message);
+  if (!err.statusCode) err.statusCode = 500;
+  res.status(err.statusCode).send(err.message);
+});
 
 
 
