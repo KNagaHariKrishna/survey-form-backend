@@ -1,9 +1,10 @@
 let express = require("express"),
-  multer = require("multer"),
-  mongoose = require("mongoose"),
-  router = express.Router();
+multer = require("multer"),
+mongoose = require("mongoose"),
+router = express.Router();
 const { uuid } = require("uuidv4");
 const DIR = "./public/";
+const Profile = require("../models/profile");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -30,7 +31,6 @@ var upload = multer({
   },
 });
 // User model
-let Profile = require("../models/Profile");
 
 router.post(
   "/user-profile",
